@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300&display=swap');
+
+.container {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-left: 500px;
+    margin-right: 500px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+    margin-top: 30px;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 15px
+}
+
+.form {
+    text-align: center;
+    
+}

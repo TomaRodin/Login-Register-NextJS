@@ -38,8 +38,13 @@ export default function index() {
     const handleSubmit = () => {
         if (password.current.value === confirmPassword.current.value & password.current.value !== null & confirmPassword.current.value !== null) {
             setExt("")
+            const authUsername = 'admin'
+            const authPassword = 'admin123'
+        
+            const token = Buffer.from(`${authUsername}:${authPassword}`, 'utf8').toString('base64')
+        
             fetch('http://localhost:3001/register', {
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${token}` },
                 body: JSON.stringify({ username: username.current.value, password: password.current.value }),
                 method: 'POST'
             })

@@ -16,9 +16,14 @@ export default function index() {
     const cookie = new Cookie();
 
     const handleSubmit = () => {
+        const authUsername = 'admin'
+        const authPassword = 'admin123'
+
+        const token = Buffer.from(`${authUsername}:${authPassword}`, 'utf8').toString('base64')
 
         axios.get('http://localhost:3001/login', {
-            params: { username: username.current.value, password: password.current.value }
+            params: { username: username.current.value, password: password.current.value },
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${token}` },
         }).then(response => {
             console.log(response.data.status)
             if (response.data.status === true) {

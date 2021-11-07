@@ -33,8 +33,14 @@ export default function index() {
             Router.push('/login')
         }
         else {
+            const username = 'admin'
+            const password = 'admin123'
+        
+            const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+        
             axios.get('http://localhost:3001/data', {
-                params: { username: cookie.get('LoggedIn') }
+                params: { username: cookie.get('LoggedIn') },
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${token}`}
             }).then(response => {
                 setData(response.data)
                 setIsLoading(false)
